@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Library's privacy policy.</p>
+
+
+@functions{
+    /*
+    [Authorize] // ne radi redirect na home page, tj. nize zasticeno
+    public class PrivacyModel : PageModel
+    {
+        private readonly ILogger<PrivacyModel> _logger;
+
+        public PrivacyModel(ILogger<PrivacyModel> logger)
+        {
+            _logger = logger;
+        }
+
+        public void OnGet()
+        {
+        }
+    }
+    */
+
+}
+

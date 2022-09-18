@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Library.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<style>
+    .available{
+        color: green;
+    }
+    .unavailable{
+        color: red;
+    }
+
+</style>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Available)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            
+                @{
+                    /*menjamo boju teksta available u zavisnosti da li imamo knjigu ili ne*/
+                }
+                @{
+                    if (item.Available.Equals("Available"))
+                    {
+                        <td class = "available">@Html.DisplayFor(modelItem => item.Available)</td>
+                    }
+                    else
+                    {
+                        <td class = "unavailable">@Html.DisplayFor(modelItem => item.Available)</td>
+                    }
+                }
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
